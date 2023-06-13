@@ -1,9 +1,9 @@
 <?php
-use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 $router->get('/', function () use ($router) {  
+    
     $appName = 'Descending Prime Numbers API';
-    $appVersion = '1.0.0';
+    $appVersion = '1.0.1';
     $timestamp = new \DateTime();
 
     $data = [
