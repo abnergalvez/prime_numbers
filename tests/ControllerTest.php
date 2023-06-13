@@ -31,14 +31,11 @@ class ControllerTest extends TestCase
     /**
      * @test
      */
-    public function test_endpoint_without_parameter_must_be_redirect_to_base()
+    public function test_endpoint_without_parameter_or_not_found_route()
     {
-        $response = $this->call('GET', '/desc_prime_numbers');
-
-        $this->assertEquals(302, $response->status());
-        $response->assertRedirect('/');
-        $redirectedResponse = $this->get($response->headers->get('Location'));
-        $this->assertStringContainsString('Descending Prime Numbers App', $redirectedResponse->response->getContent());
+        $response = $this->call('GET', '/asdasd');
+        
+        $this->assertEquals(404, $response->status());
     }
 
     /**

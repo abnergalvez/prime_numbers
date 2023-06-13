@@ -65,7 +65,7 @@ Controller tests (N2N) were also written (test/ControllerTest.php)
 
 - Base endpoint returns a successful status HAPPY PATH
 - Endpoint when parameter is letter UNHAPPY PATH
-- Endpoint without parameter must be redirect to base
+- Endpoint without parameter or not found route
 - Full HAPPY PATH
 
 to run all tests must be executed in the project:

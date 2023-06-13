@@ -2,13 +2,17 @@
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 $router->get('/', function () use ($router) {  
-    $converter = new GithubFlavoredMarkdownConverter();
-    $indexView =  $converter->convert(file_get_contents(base_path() . '/README.md'));
-    return view('index')->with('indexView', $indexView);
-});
+    $appName = 'Descending Prime Numbers API';
+    $appVersion = '1.0.0';
+    $timestamp = new \DateTime();
 
-$router->get('desc_prime_numbers/', function (){
-    return redirect('/');
+    $data = [
+        'name' => $appName, 
+        'version' => $appVersion, 
+        'timestamp' => $timestamp
+    ];
+
+    return response()->json($data);
 });
 
 $router->get('desc_prime_numbers/{maxNumber}', [
