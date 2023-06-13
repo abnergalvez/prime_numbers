@@ -1,4 +1,4 @@
-# Descending Prime Numbers API 🏷️ [1.0.0]
+# Descending Prime Numbers API 🏷️ [1.0.1]
 
 API developed in Lumen PHP, which returns prime numbers up to 2 (descending) from a given integer parameter, which must be equal to or greater than 3 .
 
