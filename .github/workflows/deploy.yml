@@ -1,0 +1,40 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main  # O el nombre de tu rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    # Configura Docker
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    # Copia el archivo de configuración de Docker que contiene las credenciales
+    - name: Copy Docker Config
+      run: |
+        mkdir ~/.docker
+        echo '$DOCKER_CONFIG' > ~/.docker/config.json
+        chmod 600 ~/.docker/config.json
+
+      env:
+        DOCKER_CONFIG: ${{ secrets.DOCKER_CONFIG }}
+
+    # Construir y subir la imagen Docker a DigitalOcean Container Registry
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t registry.digitalocean.com/agc005/ejemplo:latest .
+        echo ${{ secrets.DOCR_PASSWORD }} | docker login registry.digitalocean.com -u ${{ secrets.DOCR_USERNAME }} --password-stdin
+        docker push registry.digitalocean.com/agc005/ejemplo:latest
+
+    # Implementar en un servidor de prueba (ajusta según tu entorno)
+    - name: Deploy to Test Server
+      run: |
+        # Inserta aquí los comandos para implementar en tu servidor de prueba
