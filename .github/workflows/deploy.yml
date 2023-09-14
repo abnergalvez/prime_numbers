@@ -22,7 +22,7 @@ jobs:
     # Copia el archivo de configuración de Docker que contiene las credenciales
     - name: Copy Docker Config
       run: |
-        echo '$DOCKER_CONFIG' > ~/.docker/config.json
+        echo '${{ secrets.DOCKER_CONFIG }}' > ~/.docker/config.json
         chmod 600 ~/.docker/config.json
 
       env:
