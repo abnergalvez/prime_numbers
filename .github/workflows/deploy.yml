@@ -33,8 +33,3 @@ jobs:
         docker build -t registry.digitalocean.com/agc005/ejemplo:latest .
         echo ${{ secrets.DOCR_PASSWORD }} | docker login registry.digitalocean.com -u ${{ secrets.DOCR_USERNAME }} --password-stdin
         docker push registry.digitalocean.com/agc005/ejemplo:latest
-
-    # Implementar en un servidor de prueba (ajusta según tu entorno)
-    - name: Deploy to Test Server
-      run: |
-        # Inserta aquí los comandos para implementar en tu servidor de prueba
