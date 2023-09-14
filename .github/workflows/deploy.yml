@@ -22,7 +22,7 @@ jobs:
     # Copia el archivo de configuración de Docker que contiene las credenciales
     - name: Copy Docker Config
       run: |
-        echo '${{ secrets.DOCKER_CONFIG }}' > ~/.docker/config.json
+        echo '{"auths":{"registry.digitalocean.com":{"auth":"ZG9wX3YxX2Y3NWI5Njc4MzlhYTcyYmU4NDE5OTFiN2E2ZDA2ZmY0ZjE4MjI3ZDQ0ZGZjZjc4MDQ5ZTY2YTk1ZTMxNWFjNWE6ZG9wX3YxX2Y3NWI5Njc4MzlhYTcyYmU4NDE5OTFiN2E2ZDA2ZmY0ZjE4MjI3ZDQ0ZGZjZjc4MDQ5ZTY2YTk1ZTMxNWFjNWE="}}}' > ~/.docker/config.json
         chmod 600 ~/.docker/config.json
 
       env:
